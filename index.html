@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SnowcapsBummer Market</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <!-- Ikon salju -->
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18m9-9H3m15.364 6.364L5.636 5.636m0 12.728L18.364 5.636"/>
+      </svg>
+      <h1>SnowcapsBummer Market</h1>
+    </div>
+  </header>
+
+  <section class="card">
+    <form id="userForm" autocomplete="off" novalidate>
+      <div class="grid">
+        <div>
+          <label for="inputName">Nama</label>
+          <input id="inputName" name="name" type="text" placeholder="Masukkan nama" required />
+        </div>
+        <div>
+          <label for="inputAge">Usia</label>
+          <input id="inputAge" name="age" type="number" placeholder="Masukkan usia" required />
+        </div>
+        <div>
+          <label for="inputEmail">Email</label>
+          <input id="inputEmail" name="email" type="email" placeholder="nama@contoh.com" required />
+        </div>
+        <div>
+          <label for="inputPassword">Password</label>
+          <input id="inputPassword" name="password" type="password" placeholder="••••••••" required />
+        </div>
+      </div>
+      <div class="actions">
+        <button id="btnSubmit" type="submit">Uji (tidak tersimpan)</button>
+        <button id="btnClear" type="button" class="muted">Bersihkan</button>
+      </div>
+    </form>
+  </section>
+
+  <footer></footer>
+
+  <div id="toast" class="toast" hidden></div>
+
+  <script>
+    const form=document.getElementById('userForm');
+    const toast=document.getElementById('toast');
+    document.getElementById('btnClear').onclick=()=>{form.reset();show('Fields dibersihkan.')};
+    form.onsubmit=e=>{
+      e.preventDefault();
+      show('Form submitted (lokal). Dibersihkan.');
+      setTimeout(()=>form.reset(),600);
+    };
+    function show(msg){
+      toast.textContent=msg;toast.hidden=false;
+      toast.classList.add('visible');
+      setTimeout(()=>toast.classList.remove('visible'),1500);
+    }
+  </script>
+</body>
+</html>
